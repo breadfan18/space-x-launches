@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, footer {
+    display: flex;
+    align-items: center;
+    height: 3rem;  /* maybe 50px */
+}
+
+header {
+    padding-left: 1rem;
+    background-color: #000;
+    color: #fff;
+    box-shadow: 1px 1px 3px 2px #c2baba;
+}
+
+main {
+    flex-grow: 1; /* this will push the header up and the footer down, so sticky footer!! */
+}
+
+section#launches {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto 0 auto;
+    width: 950px;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 250px;
+    height: 175px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 3px solid black;
+    padding: 3px;
+}
+
+footer {
+    justify-content: center;
+}
