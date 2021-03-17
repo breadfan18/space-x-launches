@@ -15,5 +15,6 @@ A simple web app that visualizes SpaceX launch data
 ![wireframe](./imgs/wireframe.png)
 
 ## Getting Started
+[Click Here](#) to get started. 
 
 ## Future Enhancements
