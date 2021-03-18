@@ -1,47 +1,61 @@
-// Constant Variables
-const BASE_URL = 'https://api.spacexdata.com/v3/launches?limit=12';
+// constant variables - data that never changes
+const BASE_URL = 'https://api.spacexdata.com/v3/launches';
 
-// State Variables
+// state variables - data that changes
 let launches;
 
-// Cached element references --> parts of the dom we need to touch. 
-const $launches = $('section#launches');
+// cached element references - parts of the dom we need to touch
+const $launches = $('#launches');
 
+// event listeners - capture and respond to events i.e. user clicks on something
+$launches.on('click', '.card', handleShowModal);
 
-// Event Listeners 
-
-
-// Functions
+// functions - code that represents actions taken/carried out
 init();
-
 function init() {
     getData();
 }
 
+function handleShowModal() {
+    const flightId = parseInt(this.dataset.flightNumber); // "1"
+    const selectedLaunch = launches.find(function(launch) { 
+        return launch.flight_number === flightId;
+    });
+    // add the content to the modal
+    $('#patch').attr({
+        src: selectedLaunch.links.mission_patch_small,
+        alt: selectedLaunch.mission_name
+    });
+    $('#title').text(selectedLaunch.mission_name);
+    $('#year').text(`Year of Launch: ${selectedLaunch.launch_year}`);
+    $('#details').text(selectedLaunch.details);
+    $('.modal').modal();
+}
+
 function getData() {
-    $.ajax(BASE_URL)
-        .then(
-            function (data) {
-                launches = data;
-                console.log(data);
-                render();
-            },
-            function error() {
-                console.log(error);
-            }
-        );
+    $.ajax(BASE_URL + "?limit=12")
+        .then(function (data) {
+            launches = data;
+            render();
+        }, function (error) {
+            console.log(error);
+        });
 }
 
 function render() {
-    const html = launches.map(function (launch) {
+    const html = launches.map(function(launch) {
         return `
-            <article class="card">
-            <h1>${launch.mission_name}</h1>
-            <p>${launch.launch_year}</p>
+            <article data-flight-number="${launch.flight_number}" class="card">
+                <h1>${launch.mission_name}</h1>
+                <p>${launch.launch_year}</p>
             </article>
         `;
-    })
-
+    });
     $launches.append(html);
-    
 }
+
+
+
+
+
+

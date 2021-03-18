@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script defer src="js/script.js"></script>
     <title>Space X Launcher</title>
 </head>
@@ -19,7 +21,7 @@
     <main>
         <section id="launches">
             <!-- Emmet for the following: article.card*12>h1{Launch}p{Year} -->
-          
+
 
 
         </section>
@@ -27,6 +29,19 @@
     <footer>
         <p>All Rights Reserved &copy; SPX 2021</p>
     </footer>
+    <article class="modal">
+        <div class="container">
+            <div class="col-1">
+                <h1 id="title"></h1>
+                <p id="year"></p>
+                <p id="details"></p>
+            </div>
+            <div class="col-2">
+                <img src="" alt="" id="patch">
+            </div>
+        </div>
+ 
+    </article>
 
 </body>
 
